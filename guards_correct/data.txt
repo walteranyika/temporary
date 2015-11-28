@@ -1,0 +1,11 @@
+SELECT  
+		        contributions.contribution_id, 
+		        members.names,
+		        contributions.date_contributed,
+		        contributions.contribution_amt,
+		        companies.name
+		        FROM    members 
+		        INNER JOIN contributions ON members.meber_id=contributions.member_id
+		        INNER JOIN(
+		        SELECT company_id, name FROM companies WHERE  company_id>'0'
+		        )companies ON companies.company_id=members.company_id
